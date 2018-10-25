@@ -8,8 +8,25 @@ class CreditCardIssuer {
     if (typeof number === 'string') {
       throw new Error('Invalid credit card number...');
     }
-    return issuers.mastercard.friendlyName;
+
+    const matches = [];
+
+    for(let issuer in issuers) {
+      const model = issuers[issuer];
+
+      if(model.validate(number)) {
+        matches.push(model.friendlyName);
+      }
+    }
+
+    if ( !matches.length ) {
+      return 'uknown card'
+    }
+
+    return matches;
   }
-}
+};
+
+console.log(CreditCardIssuer.get(3423123123123));
 
 module.exports = CreditCardIssuer;
