@@ -2,13 +2,13 @@ const assert = require('assert');
 const { americanexpress } = require('../../src/issuers');
 
 const americanexpress_cards = [
-  3455555555554444,
-  3705105105105100
+  345555555555444,
+  370510510510510
 ];
 
 const not_americanexpress_cards = [
-  6011111111111117,
-  3530111333300000
+  601111111111117,
+  353011133330000
 ];
 
 describe('americanexpress', function() {

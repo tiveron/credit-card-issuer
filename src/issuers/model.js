@@ -12,7 +12,39 @@ class IssuerModel {
   }
 
   validate(number) {
-    return number.toString().match(this.validator) ? true : false;
+    number = number.toString();
+    let isValid = false;
+
+    if( this.isNumberValid(number) && this.isLengthValid(number) ) {
+      isValid = true;
+    }
+
+
+    return isValid;
+  }
+
+  isNumberValid(number) {
+    return number.match(this.validator)
+  }
+
+  isLengthValid(number) {
+    let isValid = false;
+    let size = this.size;
+    let length = number.length;
+
+    if( Number.isInteger(size) ) {
+      if ( length === size ) {
+        isValid = true;
+      }
+    }
+
+    if( Array.isArray(size) ) {
+      if( size.includes(length) ) {
+        isValid = true;
+      }
+    }
+
+    return isValid;
   }
 };
 

@@ -27,6 +27,5 @@ class CreditCardIssuer {
   }
 };
 
-console.log(CreditCardIssuer.get(3423123123123));
 
 module.exports = CreditCardIssuer;
